@@ -31,14 +31,14 @@ describe DockingStation do
       expect(subject.full?).to be false
     end
     it "should be true if bike is docked" do
-      subject.dock Bike.new
+      20.times {subject.dock Bike.new}
       expect(subject.full?).to be true
     end
   end
 
   describe "#dock" do
       it "should raise_error if Full" do
-        subject.dock Bike.new
+        20.times {subject.dock Bike.new}
         expect{subject.dock(Bike.new)}.to raise_error "station is full"
     end
   end

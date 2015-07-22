@@ -2,11 +2,15 @@ require 'docking_station'
 
 describe DockingStation do
 
+  it "should have a default capacity" do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
   it "should respond to dock method" do
     expect(subject).to respond_to(:dock).with(1).argument
   end
 
-  it "should respond to full? method" do
+  xit "should respond to full? method" do
     expect(subject).to respond_to(:full?)
   end
 
@@ -26,7 +30,7 @@ describe DockingStation do
 
   end
 
-  describe "#full?" do
+  xdescribe "#full?" do
     it "should be false with empty station" do
       expect(subject.full?).to be false
     end

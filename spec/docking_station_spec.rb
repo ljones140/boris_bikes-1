@@ -2,19 +2,39 @@ require 'docking_station'
 
 describe DockingStation do
 
-  it 'releases/gets bike that works' do
-    subject.dock(Bike.new)
-    expect(subject.release_bike).to be_a Bike
-    expect(subject.release_bike).to be_working
+  it "should respond to dock method" do
+    expect(subject).to respond_to(:dock).with(1).argument
   end
-  it "responds to dock with 1 arg" do
-     expect(subject).to respond_to(:dock).with(1).argument
+
+  it "should respond to full? method" do
+    expect(subject).to respond_to(:full?)
   end
-  desribe '#release_bike' do
-    it "gives error if empty of bikes" do
-      expect{subject.release_bike}.to raise_error 'No bikes available'
+
+
+  describe "#release_bike" do
+    it "should release instance of Bike" do
+      subject.dock Bike.new
+      expect(subject.release_bike).to be_a(Bike)
+    end
+    it "should be working" do
+      subject.dock Bike.new
+      expect(subject.release_bike).to be_working
+    end
+    it "should raise an error if DockingStation empty" do
+      expect{subject.release_bike}.to raise_error "No bikes available"
     end
   end
+
+  describe "#full?" do
+    it "should be false with empty station" do
+      expect(subject.full?).to be false
+    end
+    it "should be true if bike is docked" do
+      subject.dock Bike.new
+      expect(subject.full?).to be true
+    end
+  end
+
 end
 
 

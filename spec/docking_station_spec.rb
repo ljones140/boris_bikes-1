@@ -23,6 +23,7 @@ describe DockingStation do
     it "should raise an error if DockingStation empty" do
       expect{subject.release_bike}.to raise_error "No bikes available"
     end
+
   end
 
   describe "#full?" do
@@ -34,6 +35,14 @@ describe DockingStation do
       expect(subject.full?).to be true
     end
   end
+
+  describe "#dock" do
+      it "should raise_error if Full" do
+        subject.dock Bike.new
+        expect{subject.dock(Bike.new)}.to raise_error "station is full"
+    end
+  end
+
 
 end
 

@@ -6,10 +6,6 @@ describe Bike do
     expect(subject).to respond_to(:working?)
   end
 
-  it "can be reported as broken?" do
-    subject.report_broken
-    expect(subject).to be_broken
-  end
 
   it "should be not working if broken" do
     subject.report_broken

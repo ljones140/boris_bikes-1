@@ -2,8 +2,13 @@ require 'docking_station'
 
 describe DockingStation do
 
-  it "should have a default capacity" do
-    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  it "should have a default capacity of 20" do
+    expect(subject.capacity).to eq(20)
+  end
+
+  it "should be able to be given capacity at creation" do
+    station = DockingStation.new(10)
+    expect(station.capacity).to eq(10)
   end
 
   it "capacity should be changeable" do

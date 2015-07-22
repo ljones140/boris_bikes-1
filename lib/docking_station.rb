@@ -8,9 +8,9 @@ class DockingStation
     @capacity = capacity
   end
   def release_bike
-    raise "No bikes available" if empty?
-    raise "Bike is broken" unless @bikes.last.working?
-    @bikes.pop
+    working_bikes = @bikes.select{|b| b.working?}
+    raise "No working bikes available" if working_bikes.empty?
+    working_bikes.pop
   end
   def dock bike
     raise "station is full" if full?

@@ -11,7 +11,7 @@ describe DockingStation do
     expect(station.capacity).to eq(10)
   end
 
-  it "changeable capacity" do
+  it "has changeable capacity" do
     subject.capacity = 10
     expect(subject.capacity).to eq(10)
   end
